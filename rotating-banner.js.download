@@ -1,0 +1,10 @@
+var slideIndex1=0;var slideIndex2=0;var screenWith=0;var timeInterval=5000;var slider=0;const desktopCarousal=document.getElementById("desktop-carousal");const mobileCarousal=document.getElementById("mobile-carousal");window.addEventListener("resize",function(){screenWith=window.screen.width;});window.addEventListener("load",function(){screenWith=window.screen.width;});desktopCarousal.addEventListener("mouseover",pause,false);desktopCarousal.addEventListener("mouseout",resume,false);mobileCarousal.addEventListener("mouseover",pause,false);mobileCarousal.addEventListener("mouseout",resume,false);function carouselDesktop(){let i;let x=document.getElementsByClassName("strip-desktop");for(i=0;i<x.length;i++){x[i].style.display="none";}
+slideIndex1++;if(slideIndex1>x.length){slideIndex1=1}
+x[slideIndex1-1].style.display="block";slider=setTimeout(carousel,timeInterval);}
+function carouselMobile(){let i;let x=document.getElementsByClassName("strip-mobile");for(i=0;i<x.length;i++){x[i].style.display="none";}
+slideIndex2++;if(slideIndex2>x.length){slideIndex2=1}
+x[slideIndex2-1].style.display="block";slider=setTimeout(carousel,timeInterval);}
+function carousel(){if(screenWith<=749){carouselMobile();}else{carouselDesktop();}}
+function pause(){clearTimeout(slider);}
+function resume(){slider=setTimeout(carousel,timeInterval);}
+carousel();
